@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FifthProject</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if current_user %>
+  <nav class="navbar navbar-default">
+
+    
+    <p class="navbar-text"><%= link_to 'Home', home_index_path, method: :get %></p>
+    <p class="navbar-text"><%= link_to 'Settings', edit_user_registration_path, method: :get %></p>
+    <p class="navbar-text"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
+</nav>
+  <% end %>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+</body>
+</html>

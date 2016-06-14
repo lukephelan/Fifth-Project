@@ -1,0 +1,27 @@
+<h1>Edit Favourite Movie</h1>
+
+<%= form_for @favmovie do |m| %>
+
+<% if @favmovie.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@favmovie.errors.count, "error") %> prohibited
+      this from being saved:
+    </h2>
+    <ul>
+      <% @favmovie.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= m.label :title %><br />
+    <%= m.collection_select :movie, Movie.all, :id, :title %>
+  </div>
+
+  <div class="actions">
+    <%= m.submit "Save" %>
+  </div>
+<% end %>
